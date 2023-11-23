@@ -22,19 +22,18 @@ function get_list_gen(p_tab_pokemon) {
     console.log(p_tab_pokemon);
     // création d'un tableau intermédiaire ne contenant que le champs génération
     var interim_gen_tab = [];
-    for (let i=1; i<=p_tab_pokemon.lenght-1; i++) {
+    for (let i=1; i<=p_tab_pokemon.length-1; i++) {
     // ne parcourir le tableau qu'à partir  du deuxième élément (pas de pokemon pour l'Id 0)
         interim_gen_tab.push(p_tab_pokemon[i].generation);
     }
     console.log(interim_gen_tab);
     g_list_gen = remove_duplicates_in_tab(interim_gen_tab);
     // remove_duplicates_in_tab renvoie un nouveau tableau (tab_no_duplicates)
-    console.log('g_list_gen : ' + g_list_gen);
+    console.log(g_list_gen);
 }
 
 function get_list_type(p_tab_pokemon) {
-    for (let i=1; i<=g_list_pokemon.lenght-1; i++) {
-    }
+    
     return;    
 }
 

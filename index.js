@@ -12,6 +12,9 @@ async function get_pokemon() {
     }
 
 function get_list_gen() {
+    for(let i=1; i<g_list_pokemon.lenght; i++);
+    
+
 
 }
 

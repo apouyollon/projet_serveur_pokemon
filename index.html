@@ -10,14 +10,32 @@
     <body>
         <header>
             <h1>Pokédex</h1>
+            <nav>
+                <ul>
+                    <li onclick="display_sections(1)">Accueil</li>
+                    <li onclick="display_sections(2)">Générations</li>
+                    <li onclick="display_sections(3)">Types</li>
+                </ul>
+            </nav>
         </header>
 
-        <section id="pokemon_details"></section>
-
         <section id="accueil">
-                
+            <h2>Accueil</h2>
+            <form action="GET">
+                <label for="searchbar">Rechercher un pokémon</label>
+                <input type="text" name="searchbar" id="searchbar" required>
+                <select name="searchselect" id="searchselect">
+                    <option value="nom">Nom</option>
+                    <option value="nom">Nom</option>
+                    <option value="nom">Nom</option>
+                </select>
+                <button type="submit">GO</button>
+            </form>
+            <section id="pokemon_reduct"></section>
         </section>
         
+        <section id="pokemon_details"></section>
+
         <section id="generation">
             <h2>Liste des pokémons par génération</h2>
             <ul id="list_gen"></ul>

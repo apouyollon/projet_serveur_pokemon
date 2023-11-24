@@ -1,0 +1,19 @@
+header {
+    background-color:rgb(255, 89, 89);
+    padding:5%;
+}
+
+.images_evolution {
+    width: 100px;
+    height: auto;
+}
+
+.image_pokemon {
+    width: 300px;
+    height: auto;
+}
+
+.evolution {
+    padding:5%;
+    border: blue solid 2px;
+}

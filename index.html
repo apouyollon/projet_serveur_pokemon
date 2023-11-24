@@ -6,15 +6,18 @@
         <title>Pokedex</title>
         <script src="jquery.min.js"></script>
         <link rel="stylesheet" href="style.css" />
+        <link rel="icon" href="assets/Poké Ball.ico" type="icon">
+        <link rel="shortcut icon" href="assets/Poké Ball.ico" type="icon">
     </head>
     <body>
         <header>
+            <img id="pokeball" src="assets/Poké Ball.png">
             <h1>Pokédex</h1>
             <nav>
-                <ul>
-                    <li onclick="display_sections(1)">Accueil</li>
-                    <li onclick="display_sections(2)">Générations</li>
-                    <li onclick="display_sections(3)">Types</li>
+                <ul id="menu">
+                    <li class="menu_link" onclick="display_sections(1)">Accueil</li>
+                    <li class="menu_link" onclick="display_sections(2)">Générations</li>
+                    <li class="menu_link" onclick="display_sections(3)">Types</li>
                 </ul>
             </nav>
         </header>
@@ -22,16 +25,17 @@
         <section id="accueil">
             <h2>Accueil</h2>
 
-            <form action="GET" onsubmit="send_search_data()">
+            <form method="GET">
                 <label for="searchbar">Rechercher un pokémon</label>
-                <input type="text" name="searchbar" id="searchbar" required>
+                <input type="search" name="searchbar" placeholder="Pokemon..." id="searchbar" required>
                 <select name="searchselect" id="searchselect">
                     <option value="nom">Nom</option>
                     <option value="numero">Numero</option>
                     <option value="type">Type</option>
                 </select>
-                <button type="submit">GO</button>
+                <button type="submit" id="button_go">GO</button>
             </form>
+            <ul id="search_results_list"></ul>
 
             <section id="pokemon_reduct"></section>
         </section>

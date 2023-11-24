@@ -232,7 +232,9 @@ function template_reduct_pokemon(pokemon_to_show) {
         <img src='`+ pokemon_to_show.sprites.regular +`' class='image_pokemon'/> 
         <h3>Nom : `+ pokemon_to_show.name.fr +`</h3>
         <p>Numéro : `+ pokemon_to_show.pokedexId +`</p>
-        <p>Types : `+ pokemon_to_show.types[0].name +` / `+ pokemon_to_show.types[1].name +`</p>
+        <p>Types : `+ pokemon_to_show.types[0].name +` / `+ pokemon_to_show.types[1].name +` </p> 
+        <img src='`+ pokemon_to_show.types[0].image +`' class='image_type'/>
+        <img src='`+ pokemon_to_show.types[1].image +`' class='image_type'/>
         <p>Génération : `+ pokemon_to_show.generation +`</p>
         </div>`;
         return pokemon_template;
@@ -242,7 +244,8 @@ function template_reduct_pokemon(pokemon_to_show) {
         <img src='`+ pokemon_to_show.sprites.regular +`' class='image_pokemon'/> 
         <h3>Nom : `+ pokemon_to_show.name.fr +`</h3>
         <p>Numéro : `+ pokemon_to_show.pokedexId +`</p>
-        <p>Type : `+ pokemon_to_show.types[0].name +`</p>
+        <p>Type : `+ pokemon_to_show.types[0].name +`</p> 
+        <img src='`+ pokemon_to_show.types[0].image +`' class='image_type'/> 
         <p>Génération : `+ pokemon_to_show.generation +`</p>
         </div>`;
         return pokemon_template;
@@ -253,10 +256,43 @@ function template_reduct_pokemon(pokemon_to_show) {
 
 
 // fonctions : formulaire de recherche
-function send_search_data(){
+$(document).ready(function(){
+    $("#button_go").click(function() {
+        let search = document.querySelector('#searchbar').value;
+        let option = document.querySelector('#searchselect').value;
+        console.log(search);
+        console.log(option);
+        let search_tab = [];
+        // console.log(search_tab);
+        if (option=='nom') {
+            console.log('true');
+            search_tab = g_list_pokemon.filter((e)=> e.name.fr == /search/);
+        }
+        else if (option=='numero') {
+            search_tab = g_list_pokemon.filter((e)=> e.pokedexId == /search/);
+        }
+        else {
+            search_tab = g_list_pokemon.filter((e)=> e.types == /search/);
+        }
+        console.log(search_tab);
+        let list_results;
+        $('#search_results_list').html('');
+        if (search_tab.length == 0) {
+            list_results = `<li style='list-style-type:none;'>Aucun résultat correspondant à votre recherche n'a été trouvé</li>`;
+            $('#search_results_list').append(list_results);
+        }
+        else {
+            for (let i=0; i<list_results.length; i++) {
+                list_results = `<li onclick='show_pokemons_details(` + list_results[i].pokedexId + `)' 
+                class='pokemon_name'>` + list_results[i].name.fr + `</li>`;
+                $('#search_results_list').append(list_results);
+            }
+        }
 
-}
-
+        //éviter le rechargement de la page et de la console lors de la soumission du formulaire
+        return false;
+    });
+});
 
 
 

@@ -1,6 +1,25 @@
 header {
     background-color:rgb(255, 89, 89);
     padding:5%;
+    display : flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#menu{
+    display: flex;
+    flex-direction: row;
+    min-width: 60px;
+    list-style-type: none;
+    justify-content: space-between;
+    }
+
+.menu_link{
+    padding:20px;
+}
+    
+.menu_link:hover{
+    color: rgb(255, 255, 255);
 }
 
 .images_evolution {
@@ -13,7 +32,17 @@ header {
     height: auto;
 }
 
+.image_type {
+    width: 30px;
+    height: auto;
+}
+
+#pokeball {
+    width: 75px;
+    height: auto;
+}
+
 .evolution {
     padding:5%;
-    border: blue solid 2px;
+    border: red solid 2px;
 }

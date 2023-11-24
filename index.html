@@ -21,16 +21,18 @@
 
         <section id="accueil">
             <h2>Accueil</h2>
-            <form action="GET">
+
+            <form action="GET" onsubmit="send_search_data()">
                 <label for="searchbar">Rechercher un pokémon</label>
                 <input type="text" name="searchbar" id="searchbar" required>
                 <select name="searchselect" id="searchselect">
                     <option value="nom">Nom</option>
-                    <option value="nom">Nom</option>
-                    <option value="nom">Nom</option>
+                    <option value="numero">Numero</option>
+                    <option value="type">Type</option>
                 </select>
                 <button type="submit">GO</button>
             </form>
+
             <section id="pokemon_reduct"></section>
         </section>
         

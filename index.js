@@ -252,6 +252,16 @@ function template_reduct_pokemon(pokemon_to_show) {
 
 
 
+// fonctions : formulaire de recherche
+function send_search_data(){
+
+}
+
+
+
+
+
+
 
 // fonctions de navigation dans le menu
 function display_sections(num) {

@@ -265,6 +265,8 @@ $(document).ready(function(){
         let search_tab = [];
         // console.log(search_tab);
         if (option=='nom') {
+            // utilisation des regex pour pouvoir comparer les éléments du tableau avec plus de flexibilité
+            // (ex: 'feu' renvoie la liste des pokemons qui ont 'feu dans leur nom')
             const regex = new RegExp(search);
             search_tab = g_list_pokemon.filter((e)=> regex.test(e.name.fr));
         }
@@ -274,7 +276,8 @@ $(document).ready(function(){
         }
         else {
             const regex = new RegExp(search);
-            search_tab = g_list_pokemon.filter((e)=> regex.test(e.types));
+            search_tab = g_list_pokemon.filter((e)=> regex.test(e.types.map((x) => x.name)));
+            //e.type.map renvoie la liste des noms des types (permet de comparer la regex pour plusieurs éléments du tableau)
         }
         console.log(search_tab);
         let list_results=[];

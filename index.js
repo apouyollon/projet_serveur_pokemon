@@ -265,29 +265,34 @@ $(document).ready(function(){
         let search_tab = [];
         // console.log(search_tab);
         if (option=='nom') {
-            console.log('true');
-            search_tab = g_list_pokemon.filter((e)=> e.name.fr == /search/);
+            const regex = new RegExp(search);
+            search_tab = g_list_pokemon.filter((e)=> regex.test(e.name.fr));
         }
         else if (option=='numero') {
-            search_tab = g_list_pokemon.filter((e)=> e.pokedexId == /search/);
+            const regex = new RegExp(search);
+            search_tab = g_list_pokemon.filter((e)=> regex.test(e.pokedexId));
         }
         else {
-            search_tab = g_list_pokemon.filter((e)=> e.types == /search/);
+            const regex = new RegExp(search);
+            search_tab = g_list_pokemon.filter((e)=> regex.test(e.types));
         }
         console.log(search_tab);
-        let list_results;
+        let list_results=[];
         $('#search_results_list').html('');
         if (search_tab.length == 0) {
             list_results = `<li style='list-style-type:none;'>Aucun résultat correspondant à votre recherche n'a été trouvé</li>`;
             $('#search_results_list').append(list_results);
         }
         else {
-            for (let i=0; i<list_results.length; i++) {
-                list_results = `<li onclick='show_pokemons_details(` + list_results[i].pokedexId + `)' 
-                class='pokemon_name'>` + list_results[i].name.fr + `</li>`;
+            for (let i=0; i<search_tab.length; i++) {
+                list_results = `<li onclick='show_pokemons_details(` + search_tab[i].pokedexId + `)' 
+                class='pokemon_name'>` + search_tab[i].name.fr + `</li>`;
                 $('#search_results_list').append(list_results);
             }
         }
+
+        $('#pokemon_details').show();
+        $('#pokemon_reduct').hide();
 
         //éviter le rechargement de la page et de la console lors de la soumission du formulaire
         return false;
@@ -305,6 +310,7 @@ function display_sections(num) {
         $('#accueil').show();
         $('#generation').hide();
         $('#type').hide();
+        $('#pokemon_reduct').show();
         $('#pokemon_details').hide();
         show_pokemons_reduct(Math.floor(Math.random() * g_list_pokemon.length)+1);
     }
